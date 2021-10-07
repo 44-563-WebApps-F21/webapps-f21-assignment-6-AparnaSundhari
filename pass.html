@@ -50,6 +50,7 @@
         let usingImage = 1;
         let correct = 0;
         let wrong = 0;
+        var tempNew = 0;
 
         function processPhrase() {
             console.log("Getting form values")
@@ -59,20 +60,26 @@
             out = document.getElementById("result")
 
             if (password == guess) {
-                alert("Access allowed")
+                tempNew = 0
                 correct = correct + 1
                 out.innerHTML = "correct : " + correct + " " + "wrong : " + wrong
+                alert("Access allowed")
             } else {
-                alert("Access denied")
+                tempNew = tempNew + 1
                 wrong = wrong + 1
-                if (wrong >= 3) {
-                    out.innerHTML = "Account Locked"
-                }else {
-                    out.innerHTML = "correct : " + correct + " " + "wrong : " + wrong
+                out.innerHTML = "correct : " + correct + " " + "wrong : " + wrong
+                alert("Access denied")
+                if (tempNew >= 3) {
+                    if (wrong >= 3) {
+                        incorrectPassPhrase()
+                    }
                 }
             }
         }
 
+        function incorrectPassPhrase() {
+            alert("Account Locked")
+        }
         function newImage() {
             image = document.getElementById("image")
             switch (usingImage) {
