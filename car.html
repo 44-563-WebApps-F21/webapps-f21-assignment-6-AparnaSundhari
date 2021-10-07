@@ -24,8 +24,22 @@
         </form>
     </div>
 
+    <div class="container">
+        <form>
 
-    <p id="result">This text will be replaced </p>
+                <label for="form_property">Enter a property </label>
+                <input type="text" id="form_property" name="form_property" value="color"><br>
+            
+                <label for="form_value">Enter a value </label>
+                <input type="text" id="form_value" name="form_value"><br>
+            
+            <input type="button" onclick="updateCar()" value="Update the Car">
+        </form>
+    </div>
+
+    <div class="container">
+        <p id="result">This text will be replaced </p>
+    </div>
 
     <script>
         var my_car = {}
@@ -46,6 +60,14 @@
                 my_car['gps'] = 'true'
             else
                 my_car['gps'] = 'false'
+            document.getElementById("result").innerHTML = JSON.stringify(my_car)
+            console.log(my_car)
+        }
+
+        function updateCar() {
+            form_property = document.getElementById("form_property").value
+            form_value = document.getElementById("form_value").value
+            my_car[form_property] = form_value
             document.getElementById("result").innerHTML = JSON.stringify(my_car)
             console.log(my_car)
         }
